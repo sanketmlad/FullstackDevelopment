@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="Point10" class="com.example.pkg.Point">
+        <constructor-arg index="2" value="1.5"/>
+        <constructor-arg index="0" value="1.4"/>
+        <constructor-arg index="1" value="1.6"/>
+        <property name = "x"   value="0"/>
+        <property name = "y"   value="10"/>
+    </bean>
+
+    <bean id="calc" class="com.example.pkg.Calculator">
+        <constructor-arg index="1" value="3"/>
+        <constructor-arg index="0" value="4"/>
+
+    </bean>
+
+    <bean id="validatorBean" class="com.example.pkg.BeanValidator">
+        <property name="animal1">
+            <idref bean="zebra1"/>
+        </property>
+        <property name="animal2">
+            <idref bean="bobby"/>
+        </property>
+
+    </bean>
+    <!-- <bean id="zebra" class="com.example.pkg.animal">
+
+    </bean> -->
+    <bean id="zebra1" class="com.example.pkg.animal">
+        <property name = "weight"   value="2.6"/>
+        <property name = "color" ref="blackWhite">
+        </property>
+        <property name = "size">
+            <bean id="AnimalSize" class="com.example.pkg.size">
+                <constructor-arg value="36"/>
+                <constructor-arg value="54"/>
+            </bean>
+        </property>
+    </bean>
+    <alias name="zebra1" alias="bobby"/>
+    <bean id="blackWhite" class="com.example.pkg.color">
+        <constructor-arg value="BlackAndWhite"/>
+        <constructor-arg value="56"/>
+    </bean>
+
+
+</beans>
